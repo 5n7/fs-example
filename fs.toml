@@ -51,6 +51,23 @@ module.exports = {
 """
 
 [[snippet]]
+id = "makefile-go"
+name = "Makefile"
+content = """
+.PHONY: build
+build:
+	go build -o bin/{{ .Command }} cmd/{{ .Command }}/main.go
+
+.PHONY: format
+format:
+	goimports -w .
+
+.PHONY: test
+test:
+	go test -v ./...
+"""
+
+[[snippet]]
 id = "mypy"
 name = ".mypy.ini"
 content = """
